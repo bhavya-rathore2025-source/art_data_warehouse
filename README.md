@@ -4,6 +4,8 @@
 
 This project transforms raw artwork and artist data into a structured **data warehouse** using a layered architecture (**Bronze → Silver → Gold**) to enable efficient analytics.
 
+dataset link-https://www.kaggle.com/datasets/bhavyapratap410/arts-artists-dataset
+
 ---
 
 ## 🧱 Pipeline Summary
