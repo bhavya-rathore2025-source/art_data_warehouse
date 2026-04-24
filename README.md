@@ -5,7 +5,10 @@
 This project transforms raw artwork and artist data into a structured **data warehouse** using a layered architecture (**Bronze → Silver → Gold**) to enable efficient analytics.
 
 use art_data_warehouse.dbc file for importing notebooks in databricks
+
 dataset link-https://www.kaggle.com/datasets/bhavyapratap410/arts-artists-dataset
+
+then upload this file in dev.bronze.datasets volume , and run the bronze notebook
 
 ---
 
