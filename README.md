@@ -8,7 +8,11 @@ use art_data_warehouse.dbc file for importing notebooks in databricks
 
 dataset link-https://www.kaggle.com/datasets/bhavyapratap410/arts-artists-dataset
 
-then upload this file in dev.bronze.datasets volume , and run the bronze notebook
+Run the first cell of bronze notebook to create catalog and databases. 
+
+Now go to dev.bronze.datasets, and upload the dataset.
+
+Now run the full bronze notebook, then silver transformations notebook for transformed data , and gold star schema notebook for final usable data.
 
 ---
 
