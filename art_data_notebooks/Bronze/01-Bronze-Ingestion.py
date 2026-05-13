@@ -18,6 +18,7 @@
 
 # COMMAND ----------
 
+#git testing
 artist_schema = '''
 constituent_id string,
 display_name string,
