@@ -6,63 +6,16 @@ artists_df.limit(30).display()
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### Checking nulls
+# MAGIC #### Data Quality Check
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC SELECT
-# MAGIC     COUNT(*) as total_count,
-# MAGIC     COUNT(CASE WHEN constituent_id IS NULL THEN 1 END) AS id_nulls,
-# MAGIC     COUNT(CASE WHEN display_name IS NULL THEN 1 END) AS name_nulls,
-# MAGIC     COUNT(CASE WHEN artist_bio IS NULL THEN 1 END) AS bio_nulls,
-# MAGIC     COUNT(CASE WHEN nationality IS NULL THEN 1 END) AS nationality_nulls,
-# MAGIC     COUNT(CASE WHEN gender IS NULL THEN 1 END) AS gender_nulls,
-# MAGIC     COUNT(CASE WHEN begin_date IS NULL THEN 1 END) AS birth_nulls,
-# MAGIC     COUNT(CASE WHEN end_date IS NULL THEN 1 END) AS end_nulls,
-# MAGIC     COUNT(CASE WHEN wiki_qid IS NULL THEN 1 END) AS wiki_id_nulls,
-# MAGIC     COUNT(CASE WHEN ulan IS NULL THEN 1 END) AS ulan_nulls
-# MAGIC FROM dev.bronze.artists;
+from data_quality import data_quality_summary
 
-# COMMAND ----------
+result_df = data_quality_summary(artists_df)
 
-# MAGIC %md
-# MAGIC ####Checking Empty Strings
+display(result_df)
 
-# COMMAND ----------
-
-# MAGIC %sql
-# MAGIC SELECT
-# MAGIC     COUNT(CASE WHEN TRIM(constituent_id) = '' THEN 1 END) AS constituent_id_empty,
-# MAGIC     COUNT(CASE WHEN TRIM(display_name) = '' THEN 1 END) AS display_name_empty,
-# MAGIC     COUNT(CASE WHEN TRIM(artist_bio) = '' THEN 1 END) AS artist_bio_empty,
-# MAGIC     COUNT(CASE WHEN TRIM(nationality) = '' THEN 1 END) AS nationality_empty,
-# MAGIC     COUNT(CASE WHEN TRIM(gender) = '' THEN 1 END) AS gender_empty,
-# MAGIC     COUNT(CASE WHEN TRIM(begin_date) = '' THEN 1 END) AS begin_date_empty,
-# MAGIC     COUNT(CASE WHEN TRIM(end_date) = '' THEN 1 END) AS end_date_empty,
-# MAGIC     COUNT(CASE WHEN TRIM(wiki_qid) = '' THEN 1 END) AS wiki_qid_empty,
-# MAGIC     COUNT(CASE WHEN TRIM(ulan) = '' THEN 1 END) AS ulan_empty
-# MAGIC FROM dev.bronze.artists;
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ####Checking Whitespaces
-
-# COMMAND ----------
-
-# MAGIC %sql
-# MAGIC SELECT
-# MAGIC     COUNT(CASE WHEN constituent_id != TRIM(constituent_id) THEN 1 END) AS constituent_id_ws,
-# MAGIC     COUNT(CASE WHEN display_name != TRIM(display_name) THEN 1 END) AS display_name_ws,
-# MAGIC     COUNT(CASE WHEN artist_bio != TRIM(artist_bio) THEN 1 END) AS artist_bio_ws,
-# MAGIC     COUNT(CASE WHEN nationality != TRIM(nationality) THEN 1 END) AS nationality_ws,
-# MAGIC     COUNT(CASE WHEN gender != TRIM(gender) THEN 1 END) AS gender_ws,
-# MAGIC     COUNT(CASE WHEN begin_date != TRIM(begin_date) THEN 1 END) AS begin_date_ws,
-# MAGIC     COUNT(CASE WHEN end_date != TRIM(end_date) THEN 1 END) AS end_date_ws,
-# MAGIC     COUNT(CASE WHEN wiki_qid != TRIM(wiki_qid) THEN 1 END) AS wiki_qid_ws,
-# MAGIC     COUNT(CASE WHEN ulan != TRIM(ulan) THEN 1 END) AS ulan_ws
-# MAGIC FROM dev.bronze.artists;
 
 # COMMAND ----------
 
